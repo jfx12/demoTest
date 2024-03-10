@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+		https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--    使用Spring来创建对象，被称为bean-->
+    <!--    第一种基于无参构造-->
+<!--注册bean-->
+    <bean id="log" class="com.xjf.log.log"></bean>
+    <bean id="afterLog" class="com.xjf.log.AfterLog"></bean>
+    <bean id="userservice" class="com.xjf.service.UserServiceImp"></bean>
+<!--   01 配置aopApI-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="pointcut" expression="execution(* com.xjf.service.UserServiceImp.*(..))"/>-->
+<!--        <aop:advisor advice-ref="log" pointcut-ref="pointcut"></aop:advisor>-->
+<!--        <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"></aop:advisor>-->
+<!--    </aop:config>-->
+
+<!--    自己配置-->
+    <bean id="diy" class="com.xjf.diy.diy"></bean>
+    <aop:config>
+        <aop:aspect ref="diy">
+            <aop:pointcut id="point" expression="execution(* com.xjf.service.UserServiceImp.*(..))"/>
+            <aop:after method="after" pointcut-ref="point"></aop:after>
+            <aop:before method="before" pointcut-ref="point"></aop:before>
+        </aop:aspect>
+    </aop:config>
+</beans>

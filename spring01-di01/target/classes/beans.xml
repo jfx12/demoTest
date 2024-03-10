@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="address" class="Address"><property name="address" value="河南"></property> </bean>
+<bean name="student" class="Student">
+<!--    01普通值注入-->
+    <property name="name" value="sj"></property>
+<!--    02bean注入-->
+    <property name="address" ref="address"></property>
+<!--    03数组注入-->
+    <property name="books" >
+        <array>
+            <value>jiangshan</value>
+            <value>啥农机</value>
+        </array>
+    </property>
+<!--    04list注入-->
+    <property name="hobbys">
+        <list><value>fdsf</value>
+            <value>税收</value>
+        </list>
+
+    </property>
+<!--    05map注入-->
+    <property name="cards">
+        <map>
+            <entry key="fsfd" value="1234"></entry>
+            <entry key="xjf" value="1213"></entry>
+        </map>
+    </property>
+<!--    06set注入同理-->
+<!--    07null注入-->
+    <property name="snds">
+        <null></null>
+    </property>
+<!--    properities注入-->
+    <property name="properties">
+        <props>
+            <prop key="姓名">xjg</prop>
+            <prop key="年龄">fsd</prop>
+        </props>
+    </property>
+<!--    02-->
+</bean>
+    <!-- more bean definitions for data access objects go here -->
+
+</beans>

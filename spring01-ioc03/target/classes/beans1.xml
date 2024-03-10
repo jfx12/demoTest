@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--无参构造-->
+    <bean id="user" class="com.feng.dao.User">
+        <property name="name" value="xjf"></property>
+    </bean>
+    <!--有参构造创建对象-->
+    <!--    01基于索引-->
+    <bean id="user2" class="com.feng.dao.User">
+        <constructor-arg index="0" value="xjf2"></constructor-arg>
+    </bean>
+    <!--    02基于类型 不建议使用-->
+    <bean id="user3" class="com.feng.dao.User">
+        <constructor-arg type="java.lang.String" value="xjf3"></constructor-arg>
+    </bean>
+    <!--    03直接通过参数名赋值参数-->
+    <!--    name也是别名而且name更高级可以同时取多个别名-->
+    <bean id="user4" class="com.feng.dao.User" name="user6,user7 user8">
+        <constructor-arg name="name" value="xjf4"></constructor-arg>
+    </bean>
+    <!--    别名-->
+    <alias name="user" alias="user5"></alias>
+    <!-- more bean definitions for data access objects go here -->
+
+</beans>

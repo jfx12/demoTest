@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--使用注解实现自动装配//需要配置context约束-->
+    <!--开启注解支持-->
+    <context:annotation-config/>
+
+    <bean id="cat" class="com.xjf.dao.Cat"></bean>
+    <bean class="com.xjf.dao.Dog" id="dog"></bean>
+<!--    普通装配-->
+<!--    <bean id="people" class="com.xjf.dao.People">-->
+<!--        <property name="name" value="xjf"></property>-->
+<!--        <property name="cat" ref="cat"></property>-->
+<!--        <property name="dog" ref="dog"></property>-->
+
+<!--    </bean>-->
+<!--    ByName自动装配 根据set方法找是否有对应id-->
+<!--    <bean id="people" class="com.xjf.dao.People" autowire="byName">-->
+<!--        <property name="name" value="ds"></property>-->
+<!--    </bean>-->
+<!--    ByType自动装配 根据beans所含对象的类型进行自动装配-->
+    <bean id="people1" class="com.xjf.dao.People" autowire="byType">
+        <property name="name" value="sdf">
+        </property>
+    </bean>
+    <!-- more bean definitions go here -->
+
+
+    <bean id="people" class="com.xjf.dao.People"></bean>
+</beans>
